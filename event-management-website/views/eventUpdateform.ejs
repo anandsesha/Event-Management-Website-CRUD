@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/updateEvent.css" />
+    <title>Update Event</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/events">All Events</a>
+      </nav>
+    </header>
+
+    <div class="update-event">
+      <h1>Update Event</h1>
+      <form action="/events/<%= singleEventObj._id %>/update" method="POST">
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value="<%= singleEventObj.title %>"
+          required
+        /><br /><br />
+
+        <label for="summary">Summary (Max 20 characters):</label>
+        <input
+          type="text"
+          id="summary"
+          name="summary"
+          value="<%= singleEventObj.summary %>"
+          required
+          maxlength="20"
+        /><br /><br />
+
+        <label for="host">Host:</label>
+        <input
+          type="text"
+          id="host"
+          name="host"
+          value="<%= singleEventObj.host %>"
+          required
+        /><br /><br />
+
+        <label for="start_date">Start Date:</label>
+        <input
+          type="date"
+          id="start_date"
+          name="start_date"
+          value="<%= singleEventObj.start_date.toISOString().split('T')[0] %>"
+          required
+        /><br /><br />
+
+        <label for="end_date">End Date:</label>
+        <input
+          type="date"
+          id="end_date"
+          name="end_date"
+          value="<%= singleEventObj.end_date.toISOString().split('T')[0] %>"
+          required
+        /><br /><br />
+
+        <label for="event_category">Event Category (Comma-separated):</label>
+        <input
+          type="text"
+          id="event_category"
+          name="event_category"
+          value="<%= singleEventObj.event_category.join(', ') %>"
+          required
+        /><br /><br />
+
+        <label for="location">Location:</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          value="<%= singleEventObj.location %>"
+          required
+        /><br /><br />
+
+        <a href="">
+          <button type="submit">Update Event</button>
+        </a>
+      </form>
+    </div>
+  </body>
+</html>

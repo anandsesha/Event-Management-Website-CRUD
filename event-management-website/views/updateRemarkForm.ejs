@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/updateRemarkForm.css" />
+    <title>Update Remark</title>
+  </head>
+  <body>
+    <h1>Update Remark Form</h1>
+    <div class="container">
+      <form action="/remarks/<%= oneRemarkObj._id %>" method="POST">
+        <textarea
+          name="title"
+          id="description"
+          cols="30"
+          rows="10"
+          placeholder="Enter Remark Content"
+          required
+        >
+        <%= oneRemarkObj.title %>
+        </textarea>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          value="<%= oneRemarkObj.author %>"
+          readonly
+        /><br /><br />
+
+        <input type="submit" value="Update Remark" />
+      </form>
+    </div>
+  </body>
+</html>

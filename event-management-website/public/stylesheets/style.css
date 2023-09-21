@@ -1,0 +1,38 @@
+body {
+  background-image: url('../images/cover-2.jpg'); /* Replace with your image URL */
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+h3 {
+  font-size: 20px;
+  color: #e9e5e5;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #0056b3; /* Button background color on hover */
+}

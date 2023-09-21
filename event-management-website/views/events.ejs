@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/stylesheets/events.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>Categories</h2>
+      <ul class="category-list">
+        <li><a href="/events/category/Concert">Concerts</a></li>
+        <li><a href="/events/category/Football">Football</a></li>
+        <li><a href="/events/category/Trekking">Trekking</a></li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <header>
+        <a href="/" class="button">Home</a>
+        <a href="/events/new" class="button">Add New Event</a>
+      </header>
+      <h1>List Of All Events</h1>
+
+      <div class="filter-section">
+        <label for="category-filter">Filter by Category:</label>
+        <select id="category-filter">
+          <option value="">All</option>
+          <option value="Programming">Programming</option>
+          <option value="Sports">Sports</option>
+          <option value="Trekking">Trekking</option>
+        </select>
+
+        <label>Sort by:</label>
+        <input type="radio" id="latest" name="sort" value="latest" />
+        <label for="latest">Latest</label>
+        <input type="radio" id="oldest" name="sort" value="oldest" />
+        <label for="oldest">Oldest</label>
+
+        <label for="location-filter">Filter by Location:</label>
+        <input type="text" id="location-filter" />
+      </div>
+
+      <% allEventsArray.forEach(event => { %>
+      <div class="event-card">
+        <h2><strong>Title:</strong> <%= event.title %></h2>
+        <p><strong>Summary:</strong> <%= event.summary %></p>
+        <p><strong>Host:</strong> <%= event.host %></p>
+        <% event.event_category.forEach(category => { %>
+        <p><strong>Categories:</strong> <%= category %></p>
+        <% }); %>
+        <p><strong>Location:</strong> <%= event.location %></p>
+        <p><strong>Likes:</strong> <%= event.likes ? event.likes : 0 %></p>
+        <a class="view-button" href="/events/<%= event.id %>"> View Event </a>
+      </div>
+
+      <% }); %>
+      <a href="#scroll-to-content" class="scroll-button">&#x2193;</a>
+    </div>
+  </body>
+</html>

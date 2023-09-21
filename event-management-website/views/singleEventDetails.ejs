@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/singleEventDetails.css" />
+    <title>Event Details</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/events">All Events</a>
+      </nav>
+    </header>
+
+    <div class="event-details">
+      <h1><%= singleEventObj.title %></h1>
+
+      <div class="event-info card">
+        <div class="event-left">
+          <p><strong>Summary:</strong><%= singleEventObj.summary %></p>
+          <p><strong>Host:</strong><%= singleEventObj.host %></p>
+          <p><strong>Start Date:</strong> <%= singleEventObj.start_date %></p>
+          <p><strong>End Date:</strong> <%= singleEventObj.end_date %></p>
+          <p><strong>Location:</strong> <%= singleEventObj.location %></p>
+          <p>
+            <strong>Likes:</strong>
+            <%= singleEventObj.likes ? singleEventObj.likes : 0 %>
+          </p>
+          <a href="/events/<%= singleEventObj.id %>/eventLikes">
+            <button id="likeButton">Like</button>
+          </a>
+          <a href="/events/<%= singleEventObj.id %>/edit">
+            <button id="editButton">Edit Event</button>
+          </a>
+          <a href="/events/<%= singleEventObj.id %>/delete">
+            <button id="deleteButton">Delete Event</button>
+          </a>
+        </div>
+      </div>
+      <div class="categories card">
+        <h2>Event Categories</h2>
+        <ul>
+          <% singleEventObj.event_category.forEach(event => { %>
+          <li><a href="/events/category/programming"><%= event %></a></li>
+          <% }) %>
+        </ul>
+      </div>
+
+      <div class="remarks card">
+        <h2>Add Remarks for this event</h2>
+        <form
+          action="/events/<%= singleEventObj.id %>/remarks"
+          method="post"
+          class="remark"
+        >
+          <h5>
+            <strong>Author:</strong>
+          </h5>
+          <input
+            type="text"
+            name="author"
+            placeholder="Enter author name for remark made"
+          />
+          <h5>
+            <strong>Remark:</strong>
+          </h5>
+          <textarea
+            name="title"
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Enter your remark for this event"
+          >
+          </textarea>
+
+          <input
+            class="button"
+            style="display: block; margin: 1rem 0"
+            type="submit"
+            value="Add Remark"
+          />
+        </form>
+      </div>
+
+      <div class="all-remarks card">
+        <h2>All Remarks</h2>
+        <% singleEventObj.remarks.forEach(remark => { %>
+        <p>
+          <span><strong><%= remark.author %>:</strong></span> <%= remark.title
+          %>
+        </p>
+        <p>
+          <strong>Likes:</strong>
+          <span class="remarkLikesCount"> <%= remark.likes %> </span>
+        </p>
+        <a href="/remarks/<%= remark._id %>/remarkLike">
+          <button class="likeRemarkButton">Like</button>
+        </a>
+        <a href="/remarks/<%= remark._id %>/edit">
+          <button class="editRemarkButton">Edit</button>
+        </a>
+        <a href="/remarks/<%= remark._id %>/delete">
+          <button class="deleteRemarkButton">Delete</button>
+        </a>
+        <% }) %>
+      </div>
+    </div>
+
+    <script src=""></script>
+  </body>
+</html>
